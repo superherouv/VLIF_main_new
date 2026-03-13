@@ -1,0 +1,521 @@
+{
+  "task": "dehazing",
+  "n_samples": 8,
+  "applicability_score": 51.941066191086115,
+  "applicability_level": "LOW",
+  "key_findings": [
+    "\u2713 SNN high-freq PSNR gap small (0.4dB) \u2192 frequency-friendly task",
+    "\u2713 Wavelet HH ratio=1.45: SNN preserves high-freq diagonal",
+    "  Task signal sparsity (SCSM=0.31, BFF=0.19) \u2192 suitability=0.82",
+    "\u25b3 CKA=0.98: SNN representations similar to ANN (good quality)",
+    "\u2717 High dead neuron ratio: 45% \u2192 gradient issues"
+  ],
+  "freq_band_profiles": {
+    "snn": {
+      "low_freq_psnr": -14.286868395802298,
+      "mid_freq_psnr": -8.5208440381104,
+      "high_freq_psnr": -8.590236227303075,
+      "critical_freq": 0.03125,
+      "hf_lf_ratio": 0.6012679612727236,
+      "bands": [
+        [
+          [
+            0.0,
+            0.0625
+          ],
+          -34.799651164347566
+        ],
+        [
+          [
+            0.0625,
+            0.125
+          ],
+          -10.797753880437442
+        ],
+        [
+          [
+            0.125,
+            0.1875
+          ],
+          -8.901020474708734
+        ],
+        [
+          [
+            0.1875,
+            0.25
+          ],
+          -8.423680928192484
+        ],
+        [
+          [
+            0.25,
+            0.3125
+          ],
+          -8.512235531325269
+        ],
+        [
+          [
+            0.3125,
+            0.375
+          ],
+          -8.444466294162417
+        ],
+        [
+          [
+            0.375,
+            0.4375
+          ],
+          -8.511312059342607
+        ],
+        [
+          [
+            0.4375,
+            0.5
+          ],
+          -8.405383038921817
+        ],
+        [
+          [
+            0.5,
+            0.5625
+          ],
+          -8.663884866488203
+        ],
+        [
+          [
+            0.5625,
+            0.625
+          ],
+          -8.579173931636957
+        ],
+        [
+          [
+            0.625,
+            0.6875
+          ],
+          -8.694517651093221
+        ],
+        [
+          [
+            0.6875,
+            0.75
+          ],
+          -8.460821585306585
+        ],
+        [
+          [
+            0.75,
+            0.8125
+          ],
+          -8.439990296706442
+        ],
+        [
+          [
+            0.8125,
+            0.875
+          ],
+          -8.76252233913932
+        ],
+        [
+          [
+            0.875,
+            0.9375
+          ],
+          -8.705748084498788
+        ],
+        [
+          [
+            0.9375,
+            1.0
+          ],
+          -8.477817407074106
+        ]
+      ]
+    },
+    "ann": {
+      "low_freq_psnr": -11.680676910259631,
+      "mid_freq_psnr": -8.26901216526844,
+      "high_freq_psnr": -8.20278833973037,
+      "critical_freq": 0.03125,
+      "hf_lf_ratio": 0.7022528240249539,
+      "bands": [
+        [
+          [
+            0.0,
+            0.0625
+          ],
+          -25.323399933674544
+        ],
+        [
+          [
+            0.0625,
+            0.125
+          ],
+          -8.473740111013731
+        ],
+        [
+          [
+            0.125,
+            0.1875
+          ],
+          -8.601243820122615
+        ],
+        [
+          [
+            0.1875,
+            0.25
+          ],
+          -8.133547366345976
+        ],
+        [
+          [
+            0.25,
+            0.3125
+          ],
+          -7.871453320141278
+        ],
+        [
+          [
+            0.3125,
+            0.375
+          ],
+          -8.099840137097969
+        ],
+        [
+          [
+            0.375,
+            0.4375
+          ],
+          -8.252725054167238
+        ],
+        [
+          [
+            0.4375,
+            0.5
+          ],
+          -8.317926555884863
+        ],
+        [
+          [
+            0.5,
+            0.5625
+          ],
+          -8.246203964475766
+        ],
+        [
+          [
+            0.5625,
+            0.625
+          ],
+          -8.42836511471637
+        ],
+        [
+          [
+            0.625,
+            0.6875
+          ],
+          -8.157333325174676
+        ],
+        [
+          [
+            0.6875,
+            0.75
+          ],
+          -8.45247835773898
+        ],
+        [
+          [
+            0.75,
+            0.8125
+          ],
+          -7.911060259600932
+        ],
+        [
+          [
+            0.8125,
+            0.875
+          ],
+          -8.276756694605048
+        ],
+        [
+          [
+            0.875,
+            0.9375
+          ],
+          -7.887624497660064
+        ],
+        [
+          [
+            0.9375,
+            1.0
+          ],
+          -8.531476903602528
+        ]
+      ]
+    }
+  },
+  "wavelet_result": {
+    "ll_ratio": 8.756189215046652,
+    "lh_ratio": 2.0562752062166347,
+    "hl_ratio": 1.6562559539695672,
+    "hh_ratio": 1.4491844666369875,
+    "worst_subband": "4_LL",
+    "best_subband": "2_LH"
+  },
+  "spike_spectrum_signature": {
+    "mean_spatial_peak_freq": 0.2193548387096774,
+    "mean_temporal_dom_freq": 0.4,
+    "mean_burstiness": -0.991199660089106,
+    "mean_1f_exponent": 0.0,
+    "mean_rate": 0.17974624633789063,
+    "rate_variance": 6.778078386560082e-07
+  },
+  "error_spectrum_stats": {
+    "snn": {
+      "spectral_centroid": 0.01101624119817359,
+      "hf_error_ratio": 0.008387864349404172,
+      "anisotropy_index": 9.922218622252014e-17,
+      "error_sparsity": 0.39205464712867966
+    },
+    "ann": {
+      "spectral_centroid": 0.044057160626183284,
+      "hf_error_ratio": 0.06336743465472476,
+      "anisotropy_index": 5.653437803579556e-17,
+      "error_sparsity": 0.4136463261670026
+    }
+  },
+  "task_freq_complexity": {
+    "hfr": 0.025818912953649492,
+    "sfd": 0.06326011814400337,
+    "fsi": 0.011861341843852556,
+    "scsm": 0.30622055023081984,
+    "bff": 0.1880515308784745,
+    "snn_difficulty": 0.17779670932761926,
+    "snn_suitability": 0.8222032906723807
+  },
+  "cka_matrix_snn_ann": {
+    "diagonal_similarity": 0.9792855873609222,
+    "mean_cross_similarity": 0.8761910822796968,
+    "bottleneck_layer": "enc_1",
+    "layer_names": [
+      "enc_0",
+      "enc_1",
+      "bottleneck",
+      "dec_0",
+      "dec_1"
+    ],
+    "matrix": [
+      [
+        0.9788860575345624,
+        0.841335253836514,
+        0.8603078453229421,
+        0.8478351379656619,
+        0.8580884123799077
+      ],
+      [
+        0.8387974225705918,
+        0.9807141037631396,
+        0.8502693755968581,
+        0.8434836312371916,
+        0.846052270598384
+      ],
+      [
+        0.8567855739408786,
+        0.8537468989654906,
+        0.9778330915819285,
+        0.8572272137904469,
+        0.8516036584748605
+      ],
+      [
+        0.8473811954932213,
+        0.8429821829354686,
+        0.855000150142452,
+        0.9797321935176185,
+        0.8465056117527717
+      ],
+      [
+        0.8603667843902445,
+        0.8525187959666003,
+        0.8508393823575698,
+        0.8472223224697506,
+        0.9792624904073617
+      ]
+    ]
+  },
+  "neuron_viability_stats": {
+    "layer_stats": {
+      "enc_0": {
+        "silent_fraction": 0.4515380859375,
+        "saturated_fraction": 0.0009765625,
+        "effective_fraction": 0.5289382934570312,
+        "rate_gini": 0.5496854731270485,
+        "activation_degradation_corr": 0.0
+      },
+      "enc_1": {
+        "silent_fraction": 0.45206451416015625,
+        "saturated_fraction": 0.00104522705078125,
+        "effective_fraction": 0.5285873413085938,
+        "rate_gini": 0.5501670890893042,
+        "activation_degradation_corr": 0.0
+      },
+      "bottleneck": {
+        "silent_fraction": 0.4527435302734375,
+        "saturated_fraction": 0.00109100341796875,
+        "effective_fraction": 0.5276641845703125,
+        "rate_gini": 0.551036010445252,
+        "activation_degradation_corr": 0.0
+      },
+      "dec_0": {
+        "silent_fraction": 0.4530487060546875,
+        "saturated_fraction": 0.00087738037109375,
+        "effective_fraction": 0.526947021484375,
+        "rate_gini": 0.5514654279988274,
+        "activation_degradation_corr": 0.0
+      },
+      "dec_1": {
+        "silent_fraction": 0.4491729736328125,
+        "saturated_fraction": 0.0009765625,
+        "effective_fraction": 0.5312957763671875,
+        "rate_gini": 0.5477010958934069,
+        "activation_degradation_corr": 0.0
+      }
+    },
+    "global_health": {
+      "effective_neuron_ratio": 0.5286865234375,
+      "dead_neuron_ratio": 0.4527069091796875,
+      "activity_gini": 0.5500110193107679,
+      "health_score": 0.5185289851026902
+    }
+  },
+  "isi_stats": {
+    "enc_0": {
+      "cv_isi": 0.4544953454190906,
+      "mean_isi": 1.5587707492148946,
+      "lv": 0.22875917866810236,
+      "burst_fraction": 0.872319425751458,
+      "coding_type": "burst",
+      "firing_rate": 0.17963027954101562
+    },
+    "enc_1": {
+      "cv_isi": 0.45313419622268536,
+      "mean_isi": 1.5628892772326028,
+      "lv": 0.2320925195674255,
+      "burst_fraction": 0.8722498543711072,
+      "coding_type": "burst",
+      "firing_rate": 0.1795501708984375
+    },
+    "bottleneck": {
+      "cv_isi": 0.45215638076595377,
+      "mean_isi": 1.5637158665000892,
+      "lv": 0.22982240863861497,
+      "burst_fraction": 0.8730144565411386,
+      "coding_type": "burst",
+      "firing_rate": 0.17956161499023438
+    },
+    "dec_0": {
+      "cv_isi": 0.4520222027701791,
+      "mean_isi": 1.5554467782128871,
+      "lv": 0.2293106670820168,
+      "burst_fraction": 0.8762904948380207,
+      "coding_type": "burst",
+      "firing_rate": 0.17959976196289062
+    },
+    "dec_1": {
+      "cv_isi": 0.45360273521926386,
+      "mean_isi": 1.5614442756278488,
+      "lv": 0.23120406369635493,
+      "burst_fraction": 0.8722852801858969,
+      "coding_type": "burst",
+      "firing_rate": 0.180389404296875
+    }
+  },
+  "phase_space_stats": {
+    "enc_0": {
+      "mean_v": 0.4993083524149651,
+      "std_v": 0.5003143351808214,
+      "threshold_crossing_rate": 0.27394866943359375,
+      "autocorr_tau1": -0.35850210536508553,
+      "phase_volume": -1780.7046406373647,
+      "spike_efficiency": 0.3172520237612309
+    },
+    "enc_1": {
+      "mean_v": 0.49926250040837683,
+      "std_v": 0.5000693941999294,
+      "threshold_crossing_rate": 0.2738609313964844,
+      "autocorr_tau1": -0.24791988699318834,
+      "phase_volume": -1780.6931889308994,
+      "spike_efficiency": 0.31681240805392635
+    },
+    "bottleneck": {
+      "mean_v": 0.4993758090559936,
+      "std_v": 0.5010082899517816,
+      "threshold_crossing_rate": 0.27364158630371094,
+      "autocorr_tau1": -0.38287180669793613,
+      "phase_volume": -1780.764746828213,
+      "spike_efficiency": 0.3172123299097668
+    },
+    "dec_0": {
+      "mean_v": 0.50017647220918,
+      "std_v": 0.5000434715832638,
+      "threshold_crossing_rate": 0.2743701934814453,
+      "autocorr_tau1": -0.28891649513457557,
+      "phase_volume": -1780.8895863320429,
+      "spike_efficiency": 0.31766799226126974
+    },
+    "dec_1": {
+      "mean_v": 0.500769856715108,
+      "std_v": 0.500246737410889,
+      "threshold_crossing_rate": 0.2747611999511719,
+      "autocorr_tau1": -0.2246945918936551,
+      "phase_volume": -1780.6209688135746,
+      "spike_efficiency": 0.31704324783016613
+    }
+  },
+  "manifold_comparison": {
+    "enc_0": {
+      "snn_effective_rank": 47.825748901071684,
+      "ann_effective_rank": 47.816788390625405,
+      "snn_fisher": 0.0,
+      "ann_fisher": 0.0,
+      "procrustes_dist": 0.5036294547112792,
+      "snn_pca_dim_90": 39,
+      "ann_pca_dim_90": 39
+    },
+    "enc_1": {
+      "snn_effective_rank": 47.68161120347017,
+      "ann_effective_rank": 47.72594798790458,
+      "snn_fisher": 0.0,
+      "ann_fisher": 0.0,
+      "procrustes_dist": 0.5128976171473367,
+      "snn_pca_dim_90": 39,
+      "ann_pca_dim_90": 39
+    },
+    "bottleneck": {
+      "snn_effective_rank": 47.85600342357767,
+      "ann_effective_rank": 47.83119704525651,
+      "snn_fisher": 0.0,
+      "ann_fisher": 0.0,
+      "procrustes_dist": 0.5055582197061218,
+      "snn_pca_dim_90": 39,
+      "ann_pca_dim_90": 39
+    },
+    "dec_0": {
+      "snn_effective_rank": 47.8059899235178,
+      "ann_effective_rank": 47.75589492049289,
+      "snn_fisher": 0.0,
+      "ann_fisher": 0.0,
+      "procrustes_dist": 0.5153207800671706,
+      "snn_pca_dim_90": 39,
+      "ann_pca_dim_90": 39
+    },
+    "dec_1": {
+      "snn_effective_rank": 47.83054797920616,
+      "ann_effective_rank": 47.8244495466882,
+      "snn_fisher": 0.0,
+      "ann_fisher": 0.0,
+      "procrustes_dist": 0.49990677514724297,
+      "snn_pca_dim_90": 39,
+      "ann_pca_dim_90": 39
+    }
+  }
+}

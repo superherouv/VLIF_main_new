@@ -1,0 +1,27 @@
+# Low-light enhancement task configuration
+defaults:
+  - base
+
+experiment:
+  name: "snn_lowlight"
+
+task:
+  name: "lowlight"
+  use_retinex: false    # Retinex decomposition
+
+data:
+  root: "/data/restoration/LOL/"
+
+training:
+  n_epochs: 200
+  batch_size: 8
+  patch_size: 256
+  loss_weights:
+    char: 1.0
+    ssim: 0.1
+
+# SNN notes: LOW applicability
+# Non-linear tone mapping requires analog precision
+# Expected firing rate: LOW but quality also low
+# SNN PSNR gap: ~3-5dB vs ANN
+# Only viable with event cameras or if energy is critical

@@ -1,0 +1,52 @@
+# Base configuration for SNN Applicability Study
+# All task-specific configs inherit from this
+
+experiment:
+  name: "snn_applicability_study"
+  seed: 42
+  device: "cuda"
+  log_dir: "experiments/"
+
+# ─── Model ────────────────────────────────────────────────────────────────────
+model:
+  type: "snn"              # snn | ann | hybrid
+  base_channels: 32        # Feature width (controls param count)
+  n_levels: 4              # U-Net depth
+  T: 4                     # SNN timesteps (only for SNN/hybrid)
+  tau: 0.5                 # LIF membrane time constant
+  threshold: 1.0           # LIF firing threshold
+  surrogate: "atan"        # Surrogate gradient: atan | sigmoid | triangle
+  use_plif: false          # Learnable tau per channel
+
+# ─── Training ─────────────────────────────────────────────────────────────────
+training:
+  n_epochs: 200
+  batch_size: 8
+  patch_size: 128
+  num_workers: 4
+  use_amp: true
+  grad_clip: 1.0
+  save_every: 10
+  val_every: 1
+
+optimizer:
+  name: "adamw"
+  lr: 1.0e-4
+  weight_decay: 1.0e-4
+
+scheduler:
+  name: "warmup_cosine"
+  warmup_epochs: 5
+  min_lr: 1.0e-6
+
+# ─── Data ─────────────────────────────────────────────────────────────────────
+data:
+  root: "/data/restoration/"   # Override per-task
+
+# ─── Ablations to run ─────────────────────────────────────────────────────────
+# These define the full experimental matrix
+ablations:
+  model_types: ["snn", "ann", "hybrid"]
+  T_values: [1, 2, 4, 8, 16]     # For PSNR vs T curves
+  surrogate_types: ["atan", "sigmoid", "triangle", "multi_gaussian"]
+  tau_values: [0.25, 0.5, 0.75]

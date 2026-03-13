@@ -1,0 +1,27 @@
+# Dehazing task configuration
+defaults:
+  - base
+
+experiment:
+  name: "snn_dehazing"
+
+task:
+  name: "dehazing"
+  subset: "indoor"     # indoor | outdoor | None
+
+data:
+  root: "/data/restoration/RESIDE/"
+
+training:
+  n_epochs: 200
+  batch_size: 8
+  patch_size: 256      # Larger patches needed for haze estimation
+  loss_weights:
+    char: 1.0
+    ssim: 0.1
+    freq: 0.05
+
+# SNN notes: MEDIUM-HIGH applicability
+# Transmission map has sparse boundaries
+# Expected firing rate: ~0.15-0.25
+# SNN PSNR gap: ~1.0-2.0dB vs ANN

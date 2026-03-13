@@ -1,0 +1,26 @@
+# Denoising task configuration
+defaults:
+  - base
+
+experiment:
+  name: "snn_denoising"
+
+task:
+  name: "denoising"
+  sigma: [0, 50]   # blind denoising range
+  blind: true
+
+data:
+  root: "/data/restoration/CBSD400/"   # clean images; noise added online
+
+training:
+  n_epochs: 200
+  batch_size: 16    # larger batch for denoising (smaller patches)
+  patch_size: 64
+  loss_weights:
+    char: 1.0
+    ssim: 0.05
+
+# SNN notes: MEDIUM applicability
+# Gaussian noise is dense → expect higher firing rate (~0.30-0.50)
+# Expected PSNR gap vs ANN: ~1.5dB at sigma=25, ~2.5dB at sigma=50

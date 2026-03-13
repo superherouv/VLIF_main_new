@@ -1,0 +1,33 @@
+# Super-resolution task configuration
+defaults:
+  - base
+
+experiment:
+  name: "snn_superresolution"
+
+task:
+  name: "superresolution"
+  scale: 4              # Upscale factor: 2 | 3 | 4
+  degradation: "bicubic"
+
+data:
+  root: "/data/restoration/DIV2K/HR/"
+
+model:
+  base_channels: 32
+  n_levels: 4
+
+training:
+  n_epochs: 300
+  batch_size: 16
+  hr_patch_size: 256   # HR crop, LR = 256/scale
+  loss_weights:
+    char: 1.0
+    ssim: 0.1
+    freq: 0.1          # Frequency loss critical for SR
+
+# SNN notes: LOW-MEDIUM applicability
+# For scale=4: SNN struggles (-2 to -3dB vs ANN)
+# For scale=2: SNN more competitive (-0.5 to -1.5dB)
+# Expected firing rate: moderate (~0.25-0.40)
+# Recommendation: Hybrid (SNN encoder + ANN decoder) for best SR quality

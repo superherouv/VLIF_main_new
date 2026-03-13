@@ -1,0 +1,30 @@
+# Deraining task configuration
+# Inherits from base.yaml
+
+defaults:
+  - base
+
+experiment:
+  name: "snn_deraining"
+
+task:
+  name: "deraining"
+  dataset_name: "Rain100H"    # Rain100H | Rain100L | Rain1400 | SPA-Data
+
+data:
+  root: "/data/restoration/Rain100H/"
+
+training:
+  n_epochs: 200
+  batch_size: 8
+  patch_size: 128
+  loss_weights:
+    char: 1.0
+    ssim: 0.1
+    edge: 0.05
+
+# SNN-specific notes for deraining:
+# - Deraining is HIGH applicability
+# - T=4 recommended: quality saturates after T=4
+# - rain streaks are sparse → expect firing rate ~0.10-0.15
+# - Expected PSNR: SNN ~35.5dB vs ANN ~38dB on Rain100H

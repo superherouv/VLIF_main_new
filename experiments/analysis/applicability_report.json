@@ -1,0 +1,52 @@
+{
+  "deraining": {
+    "psnr_snn": 28.15,
+    "psnr_ann": 30.41,
+    "delta_psnr": 2.2600000000000016,
+    "mean_firing_rate": 0.12,
+    "energy_ratio": 0.24,
+    "score": 64.1,
+    "level": "MEDIUM",
+    "hybrid_gain": 1.35
+  },
+  "denoising": {
+    "psnr_snn": 30.21,
+    "psnr_ann": 31.73,
+    "delta_psnr": 1.5199999999999996,
+    "mean_firing_rate": 0.42,
+    "energy_ratio": 0.6,
+    "score": 45.7,
+    "level": "LOW",
+    "hybrid_gain": 0.89
+  },
+  "superresolution": {
+    "psnr_snn": 29.85,
+    "psnr_ann": 32.64,
+    "delta_psnr": 2.789999999999999,
+    "mean_firing_rate": 0.35,
+    "energy_ratio": 0.55,
+    "score": 41.5,
+    "level": "LOW",
+    "hybrid_gain": 1.65
+  },
+  "dehazing": {
+    "psnr_snn": 34.85,
+    "psnr_ann": 36.92,
+    "delta_psnr": 2.0700000000000003,
+    "mean_firing_rate": 0.18,
+    "energy_ratio": 0.32,
+    "score": 58.5,
+    "level": "MEDIUM",
+    "hybrid_gain": 1.05
+  },
+  "lowlight": {
+    "psnr_snn": 19.3,
+    "psnr_ann": 23.65,
+    "delta_psnr": 4.349999999999998,
+    "mean_firing_rate": 0.22,
+    "energy_ratio": 0.38,
+    "score": 36.1,
+    "level": "LOW",
+    "hybrid_gain": 2.5
+  }
+}

@@ -1,0 +1,26 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Experiments / checkpoints (large files)
+experiments/checkpoints/
+*.pth
+*.pt
+*.ckpt
+
+# Logs
+*.log
+runs/
+
+# OS
+.DS_Store
+Thumbs.db

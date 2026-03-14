@@ -11,6 +11,7 @@ from .applicability import ApplicabilityAnalyzer, TaskApplicabilityResult, estim
 from .visualizer import ApplicabilityVisualizer
 from .spike_analysis import SpikeAnalyzer
 from .unified_pipeline import UnifiedAnalysisPipeline, FullAnalysisReport
+from .sai import SAICalculator, SAIReport, SAIComponents
 from . import frequency
 from . import representation
 
@@ -19,6 +20,8 @@ __all__ = [
     "ApplicabilityVisualizer",
     "SpikeAnalyzer",
     "UnifiedAnalysisPipeline", "FullAnalysisReport",
+    # Formal applicability index
+    "SAICalculator", "SAIReport", "SAIComponents",
     "frequency",
     "representation",
 ]

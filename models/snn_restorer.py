@@ -172,7 +172,7 @@ class SNNRestorer(nn.Module):
         self.dec_neurons = nn.ModuleList()  # LIF after projection
 
         for level in range(n_levels - 1):
-            skip_ch = enc_channels[-(level + 2)]
+            skip_ch = enc_channels[-(level + 1)]   # channels of enc_spikes[-(level+1)]
             # Project bottleneck channels to skip_ch before adding
             self.upsamples.append(
                 nn.Sequential(

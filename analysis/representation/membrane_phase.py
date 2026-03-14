@@ -65,6 +65,10 @@ class PhaseSpaceStats:
     # 轨迹数据（可选，用于绘图）
     trajectory_sample: Optional[np.ndarray] = None  # (T, sample_neurons)
 
+    # 膜电位分布直方图（用于可视化神经元激活分布）
+    v_hist_counts: Optional[np.ndarray] = None   # (n_bins,) 各 bin 计数
+    v_hist_edges: Optional[np.ndarray] = None    # (n_bins+1,) bin 边界
+
 
 class MembranePhaseSpace:
     """
@@ -184,6 +188,12 @@ class MembranePhaseSpace:
         spike_rate = float((v >= self.threshold).mean())
         spike_eff = spike_rate / (std_v + 1e-8)  # 每单位方差的脉冲数
 
+        # ── 膜电位分布直方图 ───────────────────────────────────────────
+        hist_min = float(v.min())
+        hist_max = max(float(v.max()), self.threshold + 0.1)
+        hist_counts, hist_edges = np.histogram(v.flatten(), bins=50,
+                                               range=(hist_min, hist_max))
+
         return PhaseSpaceStats(
             layer_name=layer_name,
             T=T, n_neurons=N,
@@ -197,6 +207,8 @@ class MembranePhaseSpace:
             v_input_correlation=v_input_corr,
             spike_efficiency=float(spike_eff),
             trajectory_sample=v_sample if T <= 16 else None,
+            v_hist_counts=hist_counts,
+            v_hist_edges=hist_edges,
         )
 
     def analyze(

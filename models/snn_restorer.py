@@ -32,6 +32,7 @@ from typing import List, Dict, Optional, Tuple
 from .snn.neurons import LIFNeuron, ParametricLIFNeuron
 from .snn.encoding import DirectEncoder
 from .snn.layers import SNNConv2d, SNNResidualBlock
+from .modules.hf_attention import HFEnhancementModule
 
 
 class SNNConvBlock(nn.Module):
@@ -118,10 +119,12 @@ class SNNRestorer(nn.Module):
         surrogate: str = "atan",
         use_plif: bool = False,
         task: str = "deraining",
+        use_hf_enhancement: bool = False,
     ):
         super().__init__()
         self.T = T
         self.task = task
+        self.use_hf_enhancement = use_hf_enhancement
 
         # Input encoding (direct: repeat frame T times)
         self.encoder = DirectEncoder(T=T, mode="repeat")
@@ -158,6 +161,9 @@ class SNNRestorer(nn.Module):
         # Bottleneck
         self.bottleneck = SNNConvBlock(ch, ch, tau=tau, threshold=threshold,
                                        surrogate=surrogate)
+
+        # 干预 1：高频增强模块（接在 bottleneck 输出之后、decoder 之前）
+        self.hf_module = HFEnhancementModule(channels=ch, T=T) if use_hf_enhancement else None
 
         # Decoder levels
         self.upsamples = nn.ModuleList()    # upsample conv after bilinear
@@ -309,6 +315,10 @@ class SNNRestorer(nn.Module):
             # Bottleneck
             h = self.bottleneck.forward_step(h)
             bottleneck_outputs.append(h)
+
+            # 干预 1：高频增强（可选）
+            if self.hf_module is not None:
+                h = self.hf_module(h)
 
             # Decode
             for level, (up, proj, dec_neuron, dec_block) in enumerate(
